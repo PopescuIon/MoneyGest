@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2016
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyGest", "MoneyGest\MoneyGest.csproj", "{C54E9B82-52EF-4693-8AA8-01C9DC247B59}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C54E9B82-52EF-4693-8AA8-01C9DC247B59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C54E9B82-52EF-4693-8AA8-01C9DC247B59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C54E9B82-52EF-4693-8AA8-01C9DC247B59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C54E9B82-52EF-4693-8AA8-01C9DC247B59}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {33038A86-24D5-490D-8B3F-AD018827AD61}
+	EndGlobalSection
+EndGlobal
