@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyGest", "MoneyGest\Mone
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Api.Oauth2", "Web.Api\Web.Api.Oauth2.csproj", "{DB1675D9-866D-424A-8B17-D69029C28F6C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicesLayer", "ServicesLayer\ServicesLayer.csproj", "{C616C96E-8D2E-49AB-894C-D9CECC56CAEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{A559E032-807A-45FB-99C5-12B86627D8D4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{DB1675D9-866D-424A-8B17-D69029C28F6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB1675D9-866D-424A-8B17-D69029C28F6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB1675D9-866D-424A-8B17-D69029C28F6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C616C96E-8D2E-49AB-894C-D9CECC56CAEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C616C96E-8D2E-49AB-894C-D9CECC56CAEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C616C96E-8D2E-49AB-894C-D9CECC56CAEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C616C96E-8D2E-49AB-894C-D9CECC56CAEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A559E032-807A-45FB-99C5-12B86627D8D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A559E032-807A-45FB-99C5-12B86627D8D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A559E032-807A-45FB-99C5-12B86627D8D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A559E032-807A-45FB-99C5-12B86627D8D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
