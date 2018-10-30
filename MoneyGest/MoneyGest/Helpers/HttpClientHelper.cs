@@ -13,11 +13,12 @@ namespace MoneyGest.Helpers
     public class HttpClientHelper : HttpClient
     {
         private string tokenPath = ConfigurationManager.AppSettings[Constants.HeaderParameterNames.TokeEndPointPath];
+
         public HttpClientHelper(List<MediaTypeWithQualityHeaderValue> acceptHeaders = null, bool authPath = false, TokenModel auth = null) : base()
         {
             if (authPath == true)
             {
-                this.BaseAddress = new Uri(tokenPath.TrimEnd('/'));
+                this.BaseAddress = new Uri(tokenPath);
                 this.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             }
             else

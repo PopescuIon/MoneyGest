@@ -8,6 +8,7 @@ using ServicesLayer.Authorization;
 using MoneyGest.Helpers;
 using System.Net.Http;
 using System.Threading.Tasks;
+ 
 
 namespace MoneyGest.Controllers
 {
@@ -36,6 +37,7 @@ namespace MoneyGest.Controllers
                     client.DefaultRequestHeaders.Add(Common.Constants.HeaderParameterNames.Password, model.Password);
 
                     response = await client.PostAsync("", content);
+                   // var token=await response.Content.ReadAsStringAsync<TokenModel>()
                 }
             }
             return Json(new { succes=true},JsonRequestBehavior.AllowGet);

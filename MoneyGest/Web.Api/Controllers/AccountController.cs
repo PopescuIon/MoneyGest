@@ -28,6 +28,7 @@ namespace Web.Api.Controllers
 
         public AccountController()
         {
+
         }
 
         public AccountController(ApplicationUserManager userManager,

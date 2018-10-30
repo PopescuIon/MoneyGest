@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
@@ -29,25 +30,48 @@ namespace Web.Api.Providers
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            var userManager = context.OwinContext.GetUserManager<ApplicationUserManager>();
+          
+                var userManager = context.OwinContext.GetUserManager<ApplicationUserManager>();
+          
+                var headers = ConvertHeadersToDictionary(context.Request.Headers);
+               
+                ApplicationUser user = await userManager.FindAsync(headers["username"], headers["password"]);
 
-            ApplicationUser user = await userManager.FindAsync(context.UserName, context.Password);
+                if (user == null)
+                {
+                    context.SetError("invalid_grant", "The user name or password is incorrect.");
+                    return;
+                }
 
-            if (user == null)
+                ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(userManager,
+                   OAuthDefaults.AuthenticationType);
+                ClaimsIdentity cookiesIdentity = await user.GenerateUserIdentityAsync(userManager,
+                    CookieAuthenticationDefaults.AuthenticationType);
+
+                AuthenticationProperties properties = CreateProperties(user.UserName);
+                AuthenticationTicket ticket = new AuthenticationTicket(oAuthIdentity, properties);
+                context.Validated(ticket);
+                context.Request.Context.Authentication.SignIn(cookiesIdentity);
+          
+        }
+        private static IDictionary<string, string> ConvertHeadersToDictionary(IHeaderDictionary headers)
+        {
+            var result = new Dictionary<string, string>();
+            foreach (var header in headers)
             {
-                context.SetError("invalid_grant", "The user name or password is incorrect.");
-                return;
+                if (header.Value.Length == 1)
+                {
+                    result.Add(header.Key, header.Value.First());
+                }
+                else
+                {
+                    for (var i = 0; i < header.Value.Length; i++)
+                    {
+                        result.Add($"{header.Key}.{i}", header.Value[i]);
+                    }
+                }
             }
-
-            ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(userManager,
-               OAuthDefaults.AuthenticationType);
-            ClaimsIdentity cookiesIdentity = await user.GenerateUserIdentityAsync(userManager,
-                CookieAuthenticationDefaults.AuthenticationType);
-
-            AuthenticationProperties properties = CreateProperties(user.UserName);
-            AuthenticationTicket ticket = new AuthenticationTicket(oAuthIdentity, properties);
-            context.Validated(ticket);
-            context.Request.Context.Authentication.SignIn(cookiesIdentity);
+            return result;
         }
 
         public override Task TokenEndpoint(OAuthTokenEndpointContext context)
