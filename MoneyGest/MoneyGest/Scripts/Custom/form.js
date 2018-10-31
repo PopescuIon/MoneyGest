@@ -5,7 +5,7 @@
             .on("submit", skillet.submitFormEvent)
     }
     skillet.submitFormEvent = function (evt) {
-       // evt.preventDefault();
+        evt.preventDefault();
         skillet.submitAjaxForm($(this), evt);
     }
     skillet.getSubmitButton = function ($form) {
@@ -18,6 +18,7 @@
             url: $form.attr("action"),
             data: $form.serialize(),
             success: function (data) {
+
                 debugger;
             }
 
