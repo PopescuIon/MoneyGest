@@ -9,6 +9,21 @@ namespace MoneyGest
 {
     public class SessionManager
     {
+        private static T GetSession<T>(string sessionId)
+        {
+            T val = default(T);
+            var session = HttpContext.Current.Session;
+            if (session[sessionId] != null)
+            {
+                val = (T)session[sessionId];
+            }
+            return val;
+        }
+        private static void SetSession<T>(string sessionId, T value)
+        {
+            HttpContext.Current.Session[sessionId] = value;
+        }
+
         public static TokenModel Autentification
         {
             get
@@ -20,22 +35,27 @@ namespace MoneyGest
                 SetSession<TokenModel>(Constants.SessionKey.AutentificationInfo, value);
             }
         }
-
-        private static T GetSession<T>(string sessionId)
+        public static AutorizationManager AutorizationManager
         {
-            T val = default(T);
-            var session = HttpContext.Current.Session;
-            if (session[sessionId] != null)
+            get
             {
-                val = (T)session[sessionId];
+                return GetSession<AutorizationManager>(Constants.SessionKey.AutentificationInfo);
             }
-            return val;
+            set
+            {
+                SetSession<AutorizationManager>(Constants.SessionKey.AutentificationInfo, value);
+            }
         }
-        private  static void SetSession<T>(string sessionId, T value)
+
+        public static void ClearAndAbandonSession()
         {
-            HttpContext.Current.Session[sessionId] = value;
+            HttpContext.Current.Session.Clear();
+            HttpContext.Current.Session.Abandon();
         }
-        
+
+
+
+
 
     }
 }

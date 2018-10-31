@@ -8,6 +8,7 @@ namespace Common
     {
         public static class SessionKey
         {
+            public const string AutorizationManager = "AutorizationManager";
             public const string AutentificationInfo = "AutentificationInfo";
         }
 
