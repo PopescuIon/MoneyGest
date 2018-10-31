@@ -12,7 +12,7 @@ namespace MoneyGest.Helpers
 {
     public class HttpClientHelper : HttpClient
     {
-        private string tokenPath = ConfigurationManager.AppSettings[Constants.HeaderParameterNames.TokeEndPointPath];
+        private readonly string   tokenPath = ConfigurationManager.AppSettings[Constants.HeaderParameterNames.TokeEndPointPath];
 
         public HttpClientHelper(List<MediaTypeWithQualityHeaderValue> acceptHeaders = null, bool authPath = false, TokenModel auth = null) : base()
         {
