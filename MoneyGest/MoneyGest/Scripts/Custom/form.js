@@ -18,12 +18,19 @@
             url: $form.attr("action"),
             data: $form.serialize(),
             success: function (data) {
-
-                debugger;
+                if (data.succes){
+                    toastr["success"]("Succes login!");
+                }
+                else
+                {
+                    toastr["error"]("Error login!");
+                }
+            },
+            error: function (data) {
+        
             }
-
         })
-        debugger;
+     
     }
 
 })(moneyGest = moneyGest.login || {}, jQuery)

@@ -9,7 +9,8 @@ namespace MoneyGest
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/toastr.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/custom").Include(
                     "~/Scripts/Custom/form.js"));
@@ -28,7 +29,8 @@ namespace MoneyGest
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/Login.css"));
+                      "~/Content/Login.css",
+                      "~/Content/toastr.css"));
         }
     }
 }
