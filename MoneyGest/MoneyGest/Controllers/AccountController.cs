@@ -31,7 +31,7 @@ namespace MoneyGest.Controllers
                 bool autentificationPath = true;
                 using (var client = new HttpClientHelper(null, autentificationPath))
                 {
-           
+
                     var body = new List<KeyValuePair<string, string>>
                     {
                        new KeyValuePair<string, string>("grant_type", "password"),
@@ -43,28 +43,22 @@ namespace MoneyGest.Controllers
                     if (!response.IsSuccessStatusCode)
                     {
                         var er = response.Content.ReadAsAsync<ErrorResultModel>();
-                        return Json(new { succes = false, error = er },JsonRequestBehavior.AllowGet);
+                        return Json(new { succes = false, error = er }, JsonRequestBehavior.AllowGet);
                     }
                     else
                     {
                         var tk = response.Content.ReadAsStringAsync();
                         var token = await response.Content.ReadAsAsync<TokenModel>();
                         SessionManager.Autentification = token;
-                   
+
                         return Json(new { succes = true }, JsonRequestBehavior.AllowGet);
                     }
-                    
-
-
-
                 }
             }
             return Json(new { succes = false }, JsonRequestBehavior.AllowGet);
         }
-        //public static bool SsoAuth(string acces_token)
-        //{
-        //    if (acces_token == null) return false;
-        //    jwt
-        //}
+
+
+             
     }
 }

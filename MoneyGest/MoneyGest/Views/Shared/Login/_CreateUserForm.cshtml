@@ -12,12 +12,16 @@
                 @Html.TextBoxFor(model => model.LoginName)
                 @Html.ValidationMessageFor(model => model.LoginName, null, new { @class = "text-danger" })
 
-                @Html.LabelFor(model=>model.Password)
+                @Html.LabelFor(model => model.Password)
                 @Html.PasswordFor(model => model.Password)
                 @Html.ValidationMessageFor(model => model.Password, null, new { @class = "text-danger" })
 
+                @Html.LabelFor(model => model.ConfirmPassword)
+                @Html.PasswordFor(model => model.ConfirmPassword)
+                @Html.ValidationMessageFor(model => model.Password, null, new { @class = "text-danger" })
+
                 @Html.SubmitButton("Login", new { @class = "login loginmodal-submit", id = "login-button" })
-               
+
             }
 
             <div class="login-help">
@@ -25,4 +29,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> 

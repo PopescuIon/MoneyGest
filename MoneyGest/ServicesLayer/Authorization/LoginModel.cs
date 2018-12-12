@@ -14,5 +14,8 @@ namespace ServicesLayer.Authorization
     
         [Required(ErrorMessage = "Password not valid")]
         public string Password { get; set; }
+
+        [Required(ErrorMessage = "Password not valid")]
+        public string ConfirmPassword { get; set; }
     }
 }

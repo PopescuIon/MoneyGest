@@ -15,6 +15,7 @@ namespace Common
         public static class HeaderParameterNames
         {
             public const string TokeEndPointPath = "TokeEndPointPath";
+            public const string ApiEndPointPath = "ApiEndPointPath";
             public const string Password = "password";
             public const string LoginName = "username";
 
