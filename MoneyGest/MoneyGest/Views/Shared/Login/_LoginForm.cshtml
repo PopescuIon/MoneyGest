@@ -10,7 +10,7 @@
             @using (Html.BeginForm("Login", "Account", FormMethod.Post))
             {
                 @Html.LabelFor(model => model.LoginName)
-                @Html.Kendo().TextBoxFor(model => model.LoginName)
+                @Html.TextBoxFor(model => model.LoginName)
                 @Html.ValidationMessageFor(model => model.LoginName, null, new { @class = "text-danger" })
 
                 @Html.LabelFor(model=>model.Password)
