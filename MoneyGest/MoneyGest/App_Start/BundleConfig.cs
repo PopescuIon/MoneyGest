@@ -38,8 +38,8 @@ namespace MoneyGest
                     ));
 
             bundles.Add(new StyleBundle("~/bundles/kendo").Include(
-                      "~/Scripts/kendo/2016.1.112/kendo.all.js",
-                      "~/Scripts/kendo/2016.1.112/kendo.aspnetmvcmvc.min.js",
+                      "~/Scripts/kendo/2016.1.112/kendo.all.min.js",
+                      "~/Scripts/kendo/2016.1.112/kendo.aspnetmvc.min.js",
                       "~/Scripts/knockout.min.js"
                       ));
         }

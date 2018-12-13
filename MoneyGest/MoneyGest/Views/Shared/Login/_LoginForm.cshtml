@@ -2,7 +2,14 @@
 @using Kendo.Mvc.UI
 @model LoginModel
 
-
+@(Html.Kendo().Menu()
+                            .Name("menu") //The name of the menu is mandatory. It specifies the "id" attribute of the widget.
+                            .Items(items =>
+                            {
+                                items.Add().Text("Item 1"); //Add an item with the text "Item1".)
+                    items.Add().Text("Item 2"); //Add an item with the text "Item2".)
+                })
+)
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
         <div class="loginmodal-container">
@@ -13,12 +20,12 @@
                 @Html.TextBoxFor(model => model.LoginName)
                 @Html.ValidationMessageFor(model => model.LoginName, null, new { @class = "text-danger" })
 
-                @Html.LabelFor(model=>model.Password)
+                @Html.LabelFor(model => model.Password)
                 @Html.PasswordFor(model => model.Password)
                 @Html.ValidationMessageFor(model => model.Password, null, new { @class = "text-danger" })
 
                 @Html.SubmitButton("Login", new { @class = "login loginmodal-submit", id = "login-button" })
-               
+
             }
 
             <div class="login-help">
