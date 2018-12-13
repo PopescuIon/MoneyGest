@@ -31,6 +31,17 @@ namespace MoneyGest
                       "~/Content/site.css",
                       "~/Content/Login.css",
                       "~/Content/toastr.css"));
+
+            bundles.Add(new StyleBundle("~/Content/kendo/2016.1.112/css").Include(
+                    "~/Content/kendo/2016.1.112/kendo.common.min.css",
+                    "~/Content/kendo/2016.1.112/kendo.material.min.css"
+                    ));
+
+            bundles.Add(new StyleBundle("~/bundles/kendo").Include(
+                      "~/Scripts/kendo/2016.1.112/kendo.all.js",
+                      "~/Scripts/kendo/2016.1.112/kendo.aspnetmvcmvc.min.js",
+                      "~/Scripts/knockout.min.js"
+                      ));
         }
     }
 }
