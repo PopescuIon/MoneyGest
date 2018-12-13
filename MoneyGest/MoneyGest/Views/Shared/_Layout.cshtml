@@ -7,12 +7,14 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/kendo")
-    @Styles.Render("~/Content/kendo/2016.1.112/css")
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/custom")
     @Scripts.Render("~/bundles/bootstrap")
+
+    @Scripts.Render("~/bundles/kendo")
+    @Styles.Render("~/Content/kendo/2016.1.112/css")
 
     @Html.Partial("~/Views/Shared/Login/_LoginForm.cshtml")
     @RenderSection("scripts", required: false)
@@ -20,7 +22,14 @@
 </head>
 
 <body>
-  
+    @(Html.Kendo().Menu()
+                    .Name("menu") //The name of the menu is mandatory. It specifies the "id" attribute of the widget.
+                    .Items(items =>
+                    {
+                     items.Add().Text("Item 1").Items(item=>item.Add().Text("adsas")) ; //Add an item with the text "Item1".)
+                     items.Add().Text("Item 2"); //Add an item with the text "Item2".)
+                    })
+    )
     <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">

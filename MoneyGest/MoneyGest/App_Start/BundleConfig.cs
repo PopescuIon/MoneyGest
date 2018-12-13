@@ -10,7 +10,8 @@ namespace MoneyGest
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/toastr.js"));
+                        "~/Scripts/toastr.js",
+                        "~/Scripts/jquery-ui.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/custom").Include(
                     "~/Scripts/Custom/form.js"));
@@ -41,6 +42,7 @@ namespace MoneyGest
                       "~/Scripts/kendo/2016.1.112/kendo.all.min.js",
                       "~/Scripts/kendo/2016.1.112/kendo.aspnetmvc.min.js",
                       "~/Scripts/knockout.min.js"
+                      //"~/Scripts/kendo/2016.1.112/jquery.min.js"
                       ));
         }
     }
