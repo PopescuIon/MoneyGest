@@ -22,44 +22,49 @@
 </head>
 
 <body>
-    @(Html.Kendo().Menu()
-                    .Name("menu") //The name of the menu is mandatory. It specifies the "id" attribute of the widget.
-                    .Items(items =>
+     <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="nav-item">@Html.ActionLink("About", "About", "Home")</li>
+                    <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+                    @if (SessionManager.Autentification != null)
                     {
-                     items.Add().Text("Item 1").Items(item=>item.Add().Text("adsas")) ; //Add an item with the text "Item1".)
-                     items.Add().Text("Item 2"); //Add an item with the text "Item2".)
-                    })
-    )
-    <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li class="nav-item"><a>@SessionManager.Autentification.userName</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
+                    }
+                </ul>
+                <ul class="nav navbar-nav navbar-right ml-auto">
+                     <li class="nav-item dropdown">
+                        <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><img src="https://www.tutorialrepublic.com/examples/images/avatar/2.jpg" class="avatar" alt="Avatar"> Paula Wilson <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></li>
+                            <li><a href="#" class="dropdown-item"><i class="fa fa-calendar-o"></i> Calendar</a></li>
+                            <li><a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a></li>
+                            <li class="divider dropdown-divider"></li>
+                            <li><a href="#" class="dropdown-item"><i class="material-icons">&#xE8AC;</i> Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
 
-                        @if (SessionManager.Autentification != null)
-                        {
-                            <li><a>@SessionManager.Autentification.userName</a></li>
-                        }
-                        else
-                        {
-                            <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
-                        }
-                    </ul>
-
-                </div>
 
             </div>
+
         </div>
+    </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -67,8 +72,8 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
-   
 
- 
+
+
 </body>
 </html>

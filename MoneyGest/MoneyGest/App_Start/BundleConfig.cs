@@ -10,8 +10,8 @@ namespace MoneyGest
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/toastr.js",
-                        "~/Scripts/jquery-ui.js"));
+                        "~/Scripts/toastr.js"
+                       /* "~/Scripts/jquery-ui.js"*/));
 
             bundles.Add(new ScriptBundle("~/bundles/custom").Include(
                     "~/Scripts/Custom/form.js"));
