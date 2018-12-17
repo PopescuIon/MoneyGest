@@ -23,7 +23,7 @@ namespace MoneyGest.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> Login(LoginModel model)
+        public async Task<JsonResult> Login(UserModel model)
         {
             if (ModelState.IsValid)
             {
@@ -47,11 +47,19 @@ namespace MoneyGest.Controllers
                     }
                     else
                     {
-                        var tk = response.Content.ReadAsStringAsync();
-                        var token = await response.Content.ReadAsAsync<TokenModel>();
-                        SessionManager.Autentification = token;
+                        try
+                        {
+                            var tk = response.Content.ReadAsStringAsync();
+                            var token = await response.Content.ReadAsAsync<TokenModel>();
+                            SessionManager.Autentification = token;
+                            return Json(new { succes = true }, JsonRequestBehavior.AllowGet);
+                        }
+                        catch (Exception ex)
+                        {
+                            return Json(new { succes = false, err=ex }, JsonRequestBehavior.AllowGet);
+                        }
 
-                        return Json(new { succes = true }, JsonRequestBehavior.AllowGet);
+
                     }
                 }
             }
@@ -59,6 +67,6 @@ namespace MoneyGest.Controllers
         }
 
 
-             
+
     }
 }

@@ -23,7 +23,7 @@
                 }
                 else
                 {
-                    toastr["error"]("Error login!");
+                    toastr["error"](data.error);
                 }
             },
             error: function (data) {

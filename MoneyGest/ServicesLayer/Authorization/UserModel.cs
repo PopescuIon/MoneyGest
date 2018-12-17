@@ -5,17 +5,14 @@ using System.Text;
 
 namespace ServicesLayer.Authorization
 {
-    public class LoginModel
+    public class UserModel
     {
-
-        [Required(ErrorMessage ="Login not valid")]
+        [Required(ErrorMessage = "Login not valid")]
         public string LoginName { get; set; }
 
-    
+
         [Required(ErrorMessage = "Password not valid")]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Password not valid")]
-        public string ConfirmPassword { get; set; }
     }
 }
