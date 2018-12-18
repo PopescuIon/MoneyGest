@@ -7,6 +7,7 @@
     <div class="modal-dialog">
         <div class="loginmodal-container">
             <h1>Login to Your Account</h1><br>
+            @Html.AntiForgeryToken()
             @using (Html.BeginForm("Login", "Account", FormMethod.Post))
             {
                 @Html.LabelFor(model => model.LoginName)

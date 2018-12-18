@@ -10,7 +10,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Net.Http.Formatting;
 using Common;
-
+using MoneyGest.Controls;
 
 namespace MoneyGest.Controllers
 {
@@ -43,7 +43,7 @@ namespace MoneyGest.Controllers
                     if (!response.IsSuccessStatusCode)
                     {
                         var er = response.Content.ReadAsAsync<ErrorResultModel>();
-                        return Json(new { succes = false, error = er }, JsonRequestBehavior.AllowGet);
+                        return  new FormErrorResponse(er.Result.message);
                     }
                     else
                     {
@@ -52,11 +52,11 @@ namespace MoneyGest.Controllers
                             var tk = response.Content.ReadAsStringAsync();
                             var token = await response.Content.ReadAsAsync<TokenModel>();
                             SessionManager.Autentification = token;
-                            return Json(new { succes = true }, JsonRequestBehavior.AllowGet);
+                            return new FormSuccesResponse("Login Succes!!", false);
                         }
                         catch (Exception ex)
                         {
-                            return Json(new { succes = false, err=ex }, JsonRequestBehavior.AllowGet);
+                            return new FormErrorResponse(ex.Message);
                         }
 
 
@@ -66,7 +66,16 @@ namespace MoneyGest.Controllers
             return Json(new { succes = false }, JsonRequestBehavior.AllowGet);
         }
 
-
+        
+        public ActionResult Logout()
+        {
+            if (SessionManager.Autentification != null)
+            {
+                SessionManager.ClearAndAbandonSession();
+               
+            }
+            return Redirect("~/Account");
+        }
 
     }
 }

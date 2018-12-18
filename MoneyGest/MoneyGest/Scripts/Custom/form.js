@@ -19,7 +19,8 @@
             data: $form.serialize(),
             success: function (data) {
                 if (data.succes){
-                    toastr["success"]("Succes login!");
+                    toastr["success"](data.message);
+                    location.reload();
                 }
                 else
                 {

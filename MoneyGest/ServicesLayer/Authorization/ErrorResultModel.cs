@@ -9,12 +9,12 @@ namespace ServicesLayer.Authorization
     {
         public HttpStatusCode statusCode { get; set; }
         public bool isModelState { get; set; }
-        public string  categoria { get; set; }
-        public string  messagio { get; set; }
+        public string  category { get; set; }
+        public string  message { get; set; }
         public ErrorResultModel()
         {
-            categoria = string.Empty;
-            messagio = string.Empty;
+            category = string.Empty;
+            message = string.Empty;
         }
     }
 }
