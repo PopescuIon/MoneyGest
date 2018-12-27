@@ -1,18 +1,26 @@
-﻿using System;
+﻿using DataLayer.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Mvc;
 
 namespace Web.Api.Controllers
 {
     public class ValuesController : ApiController
     {
-        // GET api/values
-        public IEnumerable<string> Get()
+        private readonly IUnitOfWork _unitOfWork;
+        public ValuesController(IUnitOfWork unitOfWork)
         {
-            return new string[] { "value1", "value2" };
+            _unitOfWork = unitOfWork;
+        }
+        // GET api/values
+        public IHttpActionResult Get()
+        {
+            var rez = _unitOfWork.CourseRepository.GetTopSellingCourses(5);
+            return Ok(rez);
         }
 
         // GET api/values/5
