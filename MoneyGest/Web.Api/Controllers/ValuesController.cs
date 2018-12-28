@@ -1,4 +1,5 @@
 ﻿using DataLayer.Interfaces;
+using ServicesLayer.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +12,15 @@ namespace Web.Api.Controllers
 {
     public class ValuesController : ApiController
     {
-        private readonly IUnitOfWork _unitOfWork;
-        public ValuesController(IUnitOfWork unitOfWork)
+        private readonly ICourseDataServices _courseDataServices;
+        public ValuesController(ICourseDataServices courseDataServices)
         {
-            _unitOfWork = unitOfWork;
+            _courseDataServices = courseDataServices;
         }
         // GET api/values
         public IHttpActionResult Get()
         {
-            var rez = _unitOfWork.CourseRepository.GetTopSellingCourses(5);
+            var rez = _courseDataServices.GetTopSellingCourses(5);
             return Ok(rez);
         }
 

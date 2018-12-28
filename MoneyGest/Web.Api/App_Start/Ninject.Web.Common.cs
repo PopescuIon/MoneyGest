@@ -5,8 +5,6 @@ namespace Web.Api.App_Start
 {
     using System;
     using System.Web;
-    using DataLayer.Interfaces;
-    using DataLayer.Repositories;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
     using System.Web.Http;
     using Ninject.Web.WebApi;
@@ -14,6 +12,7 @@ namespace Web.Api.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using Ninject.Web.Common.WebHost;
+    
 
     public static class NinjectWebCommon 
     {
@@ -49,10 +48,8 @@ namespace Web.Api.App_Start
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
                 RegisterServices(kernel);
-                GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
+               
                 return kernel;
-
-
             }
             catch
             {
@@ -67,7 +64,8 @@ namespace Web.Api.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
+            kernel.Bind<ServicesLayer.Interfaces.ICourseDataServices>().To<DataLayer.Services.CourseDataServices>();
+            GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
         }        
     }
 }
